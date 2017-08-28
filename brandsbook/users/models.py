@@ -8,3 +8,5 @@ class User(models.Model):
     post_code = models.CharField(max_length=6)
     street = models.CharField(max_length=64)
     nr = models.CharField(max_length=16)
+    email = models.EmailField(null=True)
+    phone = models.IntegerField(null=True)
