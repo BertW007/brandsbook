@@ -38,4 +38,12 @@ urlpatterns = [
         views.SearchView.as_view(), name="search"),
     url(r'^home/',
         views.HomeView.as_view(), name="home"),
+    url(r'^brands/',
+        views.BrandsAutocompleteView.as_view(), name="brands-search"),
+    url(r'^fav-brands/',
+        views.BrandsFavView.as_view(), name="brands-fav"),
+    url(r'^msgs/',
+        views.UserMsgView.as_view(), name="msgs"),
+    url(r'^cooperation/',
+        views.BrandsCooperationView.as_view(), name="cooperation"),
 ]

@@ -8,7 +8,11 @@
     </form>
     <ul>
         {% for u in results %}
-        <li><a href="{% url 'user-detail' pk=u.id %}">{{ u.company_name }}</a></li>
+        <li>
+            <a href="{% url 'user-detail' pk=u.id %}"><h4>{{ u.company_name }}</h4></a>
+            <input class="btn btn-primary" type="button" value="Wiadomość">
+            <input class="btn btn-primary" type="button" value="Dodaj do ulubionych">
+        </li>
         {% endfor %}
     </ul>
 

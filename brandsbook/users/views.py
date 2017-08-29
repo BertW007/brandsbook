@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import CreateView, FormView, ListView
 from django.views.generic import UpdateView
-from .forms import UserCreateForm, UserLoginForm, UserUpdateForm, SearchForm
+from .forms import UserCreateForm, UserLoginForm, UserUpdateForm, SearchForm, SearchBrandsForm
 
 
 class UserCreateView(CreateView):
@@ -24,13 +24,13 @@ class UserLoginView(FormView):
 
     def form_valid(self, form):
         login(self.request, form.user)
-        return redirect(self.request.GET.get('next', '/users'))
+        return redirect(self.request.GET.get('next', '/home'))
 
 
 class UserLogoutView(View):
     def get(self, request):
         logout(request)
-        return redirect('/users')
+        return redirect('/home')
 
 
 class UserShowAllView(ListView):
@@ -82,3 +82,20 @@ class HomeView(View):
         return render(request, 'users/home.html', {
             "us": user,
         })
+
+
+class BrandsAutocompleteView(FormView):
+    template_name = 'users/autocomplete.html'
+    form_class = SearchBrandsForm
+
+
+class BrandsFavView(View):
+    pass
+
+
+class UserMsgView(View):
+    pass
+
+
+class BrandsCooperationView(View):
+    pass

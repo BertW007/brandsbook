@@ -1,4 +1,12 @@
-a = ['Administracja biur',
+{% extends 'base.html' %}
+
+{% block script %}
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>
+      $( function() {
+        var availableBrands = [
+     'Administracja biur',
      'Administracja domów',
      'Administracja i zarządzanie pracami drogowymi i kolejowymi',
      'Administracja obiektów użyteczności publicznej',
@@ -1574,4 +1582,17 @@ a = ['Administracja biur',
      'Żelatyna',
      'Żłobki niepubliczne',
      'Żłobki publiczne'
-     ]
+        ];
+        $( "#brands" ).autocomplete({
+          source: availableBrands
+        });
+      } );
+      </script>
+{% endblock %}
+{% block content %}
+    <form action="" method="POST">{% csrf_token %}
+        <label for="brands">Opis działalności: </label>
+        <input id="brands">
+        <input type="submit" value="Znajdź" />
+    </form>
+{% endblock %}

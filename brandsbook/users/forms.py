@@ -38,8 +38,12 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'email', 'company_name', 'post_code', 'city', 'street', 'nr', 'nip', 'phone']
+        fields = ['username', 'email', 'company_name', 'post_code', 'city', 'street', 'nr', 'nip', 'phone']
 
 
 class SearchForm(forms.Form):
     company_name = forms.CharField(max_length=60)
+
+
+class SearchBrandsForm(forms.Form):
+    brands = forms.CharField()
