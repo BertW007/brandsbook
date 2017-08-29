@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form action="" method="POST">{% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" value="Szukaj" />
+    </form>
+    <ul>
+        {% for u in results %}
+        <li><a href="{% url 'user-detail' pk=u.id %}">{{ u }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

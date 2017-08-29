@@ -2,10 +2,9 @@ from django.contrib.auth import logout, login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views import View
-from django.views.generic import CreateView, FormView, ListView, DetailView
+from django.views.generic import CreateView, FormView, ListView
 from django.views.generic import UpdateView
-
-from .forms import UserCreateForm, UserLoginForm, UserUpdateForm
+from .forms import UserCreateForm, UserLoginForm, UserUpdateForm, SearchForm
 
 
 class UserCreateView(CreateView):
@@ -53,3 +52,22 @@ class UserUpdateView(UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = 'users/user_update_form.html'
+
+
+class SearchView(FormView):
+    template_name = 'users/search_form.html'
+    form_class = SearchForm
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.request = None
+
+    def form_valid(self, form):
+        company_name = form.cleaned_data['company_name']
+        user_list = User.objects.filter(
+            company_name__icontains=company_name,
+        )
+        return render(self.request, 'users/search_form.html', {
+            'form': form,
+            'results': user_list,
+        })

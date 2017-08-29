@@ -34,5 +34,6 @@ urlpatterns = [
         views.UserDetailView.as_view(), name="user-detail"),
     url(r'^update-user/(?P<pk>(\d)+)',
         views.UserUpdateView.as_view(), name="user-update"),
-
+    url(r'^search/',
+        views.SearchView.as_view(), name="search"),
 ]

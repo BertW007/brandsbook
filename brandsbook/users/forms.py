@@ -30,7 +30,7 @@ class UserLoginForm(forms.Form):
         self.user = authenticate(username=login, password=password)
 
         if self.user is None:
-            raise forms.ValidationError('Wrong user or password')
+            raise forms.ValidationError('Błędny login lub hasło')
         return cleaned_data
 
 
@@ -40,3 +40,7 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password', 'email', 'company_name', 'post_code', 'city', 'street', 'nr', 'nip', 'phone']
+
+
+class SearchForm(forms.Form):
+    company_name = forms.CharField(max_length=60)
