@@ -1,6 +1,4 @@
-from django import forms
+from django.core.validators import RegexValidator
 
 
-def post_code_validator(value):
-    if not value('\d\d\-\d\d\d'):
-        raise forms.ValidationError('Invalid post code')
+post_code_validator = RegexValidator("\d{2}\-\d{3}", "'Invalid post code'")

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th>Nazwa firmy</th>
+            <th>NIP</th>
+            <th>Email</th>
+            <th>Kod pocztowy</th>
+            <th>Miasto</th>
+            <th>Ulica</th>
+            <th>Nr.</th>
+            <th>Telefon</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>{{ user.company_name }}</td>
+            <td>{{ user.nip }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.post_code }}</td>
+            <td>{{ user.city }}</td>
+            <td>{{ user.street }}</td>
+            <td>{{ user.nr }}</td>
+            <td>{{ user.phone }}</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th colspan="5">Profil działalności: (określenie kategorii branży w jakiej działa firma)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th colspan="5">Poszukiwany profil działalności: (określenie kategorii branży, której poszukuje firma)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

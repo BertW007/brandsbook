@@ -20,6 +20,19 @@ from users import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^users',
+        views.UserShowAllView.as_view(), name="user-show-all-view"),
     url(r'^create-user/',
         views.UserCreateView.as_view(), name="user-create-view"),
+    url(r'^login/',
+        views.UserLoginView.as_view(), name="user-login"),
+    url(r'^logout/',
+        views.UserLogoutView.as_view(), name="user-logout"),
+    url(r'^add-user/',
+        views.UserCreateView.as_view(), name="user-create"),
+    url(r'^deatil-user/(?P<pk>(\d)+)',
+        views.UserDetailView.as_view(), name="user-detail"),
+    url(r'^update-user/(?P<pk>(\d)+)',
+        views.UserUpdateView.as_view(), name="user-update"),
+
 ]

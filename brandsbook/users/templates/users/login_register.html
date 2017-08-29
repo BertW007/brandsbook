@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block login %}
+<div class="alert alert-info" role="alert" align="center">
+    {{ now }}<br/>
+    Created by: {{ author }}<br>
+    {% if user.is_authenticated %}
+    <p>Zalogowano jako:
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="{% url 'user-detail' pk=user.id %}">{{ user.username }}</a>
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+        </div>
+        /
+        <a href="{% url 'user-logout' %}" class="alert-link">Wyloguj</a>
+    </p>
+    {% else %}
+    <p>
+        <a href="{% url 'user-login' %}" class="alert-link">Zaloguj</a> |
+        <a href="{% url 'user-create-view' %}" class="alert-link">Rejestracja</a>
+    </p>
+    {% endif %}
+</div>
+{% endblock %}
