@@ -6,12 +6,11 @@ from . import validators
 
 
 class UserCreateForm(forms.ModelForm):
-    password = forms.PasswordInput()
     post_code = forms.CharField(max_length=64, validators=[validators.post_code_validator])
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'company_name', 'post_code', 'city', 'street', 'nr', 'nip', 'phone']
+        fields = ['username', 'password', 'email', 'company_name', 'post_code', 'city', 'street', 'nr', 'nip', 'phone']
 
 
 class UserLoginForm(forms.Form):

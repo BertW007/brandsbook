@@ -44,7 +44,7 @@ class UserDetailView(View):
     def get(self, request, pk):
         user = User.objects.get(pk=pk)
         return render(request, 'users/user_detail.html', {
-            "user": user,
+            "us": user,
         })
 
 
@@ -70,4 +70,15 @@ class SearchView(FormView):
         return render(self.request, 'users/search_form.html', {
             'form': form,
             'results': user_list,
+        })
+
+
+class HomeView(View):
+    model = User
+
+    def get(self, request):
+        user = User.objects.all()
+
+        return render(request, 'users/home.html', {
+            "us": user,
         })

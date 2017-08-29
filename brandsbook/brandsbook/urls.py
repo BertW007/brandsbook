@@ -36,4 +36,6 @@ urlpatterns = [
         views.UserUpdateView.as_view(), name="user-update"),
     url(r'^search/',
         views.SearchView.as_view(), name="search"),
+    url(r'^home/',
+        views.HomeView.as_view(), name="home"),
 ]
