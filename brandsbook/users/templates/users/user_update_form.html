@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h4><b>Edytuj: </b></h4>
+<h4><b>Podaj dane: </b></h4>
        <form action="" method="POST">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Edytuj"/>
+           {{ form.as_p }}
+        <input type="submit" value="Ok"/>
     </form>
 {% endblock %}

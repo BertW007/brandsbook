@@ -29,15 +29,15 @@
                     {% if user.is_authenticated %}
                             <div class="dropdown" align="right">
                             Zalogowano jako:
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ user.username }}
                                 </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="{% url 'user-detail' pk=user.id %}">Mój profil</a>
-                                        <a class="dropdown-item" href="{% url 'user-update' pk=user.id %}">Edytuj</a>
+                                        <a class="dropdown-item" href="{% url 'user-update-detail' pk=user.id %}">Edytuj</a>
                                         <a class="dropdown-item" href="">Ulubione</a>
-                                        <a class="dropdown-item" href="">Propozycje firm</a>
+                                        <a class="dropdown-item" href="{% url 'cooperation' pk=user.id %}">Propozycje firm</a>
                                         <a class="dropdown-item" href="">Wiadomości</a>
                                         <a class="dropdown-item" href="">____________</a>
                                         <a class="dropdown-item" href="{% url 'user-logout' %}">Wyloguj się</a>
@@ -46,7 +46,7 @@
                     {% else %}
                         <p>
                             <a href="{% url 'user-login' %}" class="alert-link">Zaloguj</a> |
-                            <a href="{% url 'user-create-view' %}" class="alert-link">Rejestracja</a>
+                            <a href="{% url 'signup' %}" class="alert-link">Rejestracja</a>
                         </p>
                     {% endif %}
                 </p>
@@ -68,16 +68,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'brands-search' %}">Wyszukaj branże</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        LINK
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="">Action</a>
-                            <a class="dropdown-item" href="">Another action</a>
-                            <a class="dropdown-item" href="">Something else here</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Kontakt</a>
                     </li>
                 </ul>
             </div>

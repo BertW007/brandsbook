@@ -7,7 +7,6 @@
             <th>#</th>
             <th>Nazwa firmy</th>
             <th>NIP</th>
-            <th>Email</th>
             <th>Kod pocztowy</th>
             <th>Miasto</th>
             <th>Ulica</th>
@@ -20,7 +19,6 @@
             <th scope="row">1</th>
             <td>{{ us.company_name }}</td>
             <td>{{ us.nip }}</td>
-            <td>{{ us.email }}</td>
             <td>{{ us.post_code }}</td>
             <td>{{ us.city }}</td>
             <td>{{ us.street }}</td>
@@ -35,34 +33,17 @@
             <th>#</th>
             <th colspan="5">
                 Profil działalności: (określenie kategorii branży w jakiej działa firma)
-                <a href="">Dodaj</a>
+                <a href="{% url 'brands-add' pk=user.id %}">Dodaj</a>
             </th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
+            {% for b in my_brands %}
+                <td>{{ b.name }}</td>
+            {% empty %}
+                <td>Profil prowadzonej działalności nie zostal określony.</td>
+            {% endfor %}
         </tr>
     </tbody>
 </table>
@@ -72,34 +53,18 @@
             <th>#</th>
             <th colspan="5">
                 Poszukiwany profil działalności: (określenie kategorii branży, której poszukuje firma)
-                <a href="">Dodaj</a>
+                <a href="{% url 'interesting-brands-add' pk=user.id %}">Dodaj</a>
             </th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
+            {% for b in brands %}
+                <td>{{ b.name }}</td>
+            {% empty %}
+                <td>Profil szukanej działalności nie zostal określony.</td>
+            {% endfor %}
+
         </tr>
     </tbody>
 </table>

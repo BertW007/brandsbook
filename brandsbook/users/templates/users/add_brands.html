@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block script %}
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -1583,16 +1582,19 @@
      'Żłobki niepubliczne',
      'Żłobki publiczne'
         ];
-        $( "#brands" ).autocomplete({
+        $( "#id_name" ).autocomplete({
           source: availableBrands
         });
       } );
       </script>
+
 {% endblock %}
 {% block content %}
     <form action="" method="POST">{% csrf_token %}
-        <label for="brands">Opis działalności: </label>
-        <input id="brands">
-        <input type="submit" value="Znajdź" />
+        <p><label for="id_name">Opis działalności:</label>
+            <input type="text" name="name" id="id_name" maxlength="150" required />
+        </p>
+
+        <input type="submit" value="Dodaj" />
     </form>
 {% endblock %}

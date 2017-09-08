@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form action="" method="POST">{% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Pokaż" />
+    </form>
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+                <th>#</th>
+                <th>Nazwa firmy</th>
+                <th>NIP</th>
+                <th>Kod pocztowy</th>
+                <th>Miasto</th>
+                <th>Ulica</th>
+                <th>Nr.</th>
+                <th>Telefon</th>
+            </tr>
+        </thead>
+        <>
+        {% for us in brands %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ us.company_name }}
+                    </button>
+                     <p class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <button class="btn btn-primary dropdown-toggle" type="button" name="msg"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            href="">Wiadomość
+                         </button>
+
+                         <a class="btn btn-primary" type="button" name="add" href="">Dodaj do ulubionych</a>
+                     </p>
+                </td>
+                <td>{{ us.nip }}</td>
+                <td>{{ us.post_code }}</td>
+                <td>{{ us.city }}</td>
+                <td>{{ us.street }}</td>
+                <td>{{ us.nr }}</td>
+                <td>{{ us.phone }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td> Brak firmy spełniającej warunki</td>
+            </tr>>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

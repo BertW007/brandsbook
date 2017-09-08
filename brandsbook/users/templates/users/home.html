@@ -6,14 +6,10 @@
           Ostatnio zarejestrował się:
       </div>
       <div class="card-body">
-          {% for u in us %}
-          {% if forloop.last %}
-          <h2 class="card-title"><a href="{% url 'user-detail' pk=u.id %}">{{ u.company_name }}</a></h2>
-          <p class="card-text">{{ u.post_code }} {{ u.city }} <br>{{ u.street }}
-                               {{ u.nr }} <br> tel.{{ u.phone }}<br> NIP {{ u.nip }}
+          <h2 class="card-title"><a href="{% url 'user-detail' pk=us.person_id %}">{{ us.company_name }}</a></h2>
+          <p class="card-text">{{ us.post_code }} {{ us.city }} <br>{{ us.street }}
+                               {{ us.nr }} <br> tel.{{ us.phone }}<br> NIP {{ us.nip }}
           </p>
-          {% endif%}
-          {% endfor %}
       </div>
     </div>
 {% endblock %}

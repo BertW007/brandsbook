@@ -15,35 +15,33 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from users import views
 
+from users import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^users',
+    url(r'^signup/$',
+        views.signup, name='signup'),
+    url(r'^users/$',
         views.UserShowAllView.as_view(), name="user-show-all-view"),
-    url(r'^create-user/',
-        views.UserCreateView.as_view(), name="user-create-view"),
     url(r'^login/',
         views.UserLoginView.as_view(), name="user-login"),
     url(r'^logout/',
         views.UserLogoutView.as_view(), name="user-logout"),
-    url(r'^add-user/',
-        views.UserCreateView.as_view(), name="user-create"),
-    url(r'^deatil-user/(?P<pk>(\d)+)',
+    url(r'^detail-user/(?P<pk>(\d)+)/$',
         views.UserDetailView.as_view(), name="user-detail"),
-    url(r'^update-user/(?P<pk>(\d)+)',
-        views.UserUpdateView.as_view(), name="user-update"),
+    url(r'^update-detail-user/(?P<pk>(\d)+)/$',
+        views.UserUpdateDetailView.as_view(), name="user-update-detail"),
     url(r'^search/',
         views.SearchView.as_view(), name="search"),
     url(r'^home/',
         views.HomeView.as_view(), name="home"),
     url(r'^brands/',
         views.BrandsAutocompleteView.as_view(), name="brands-search"),
-    url(r'^fav-brands/',
-        views.BrandsFavView.as_view(), name="brands-fav"),
-    url(r'^msgs/',
-        views.UserMsgView.as_view(), name="msgs"),
-    url(r'^cooperation/',
+    url(r'^add_brands/(?P<pk>(\d)+)/$',
+        views.BrandsAddView.as_view(), name="brands-add"),
+    url(r'^add_intbrands/(?P<pk>(\d)+)/$',
+        views.InterestingBrandsAddView.as_view(), name="interesting-brands-add"),
+    url(r'^cooperation/(?P<pk>(\d)+)/$',
         views.BrandsCooperationView.as_view(), name="cooperation"),
 ]
