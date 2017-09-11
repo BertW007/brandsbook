@@ -27,3 +27,9 @@ class InterestingBrands(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Msgs(models.Model):
+    sender = models.ForeignKey(User, related_name="sender")
+    receiver = models.ForeignKey(User, related_name="receiver")
+    content = models.TextField()

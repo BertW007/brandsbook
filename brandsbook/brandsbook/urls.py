@@ -34,7 +34,7 @@ urlpatterns = [
         views.UserUpdateDetailView.as_view(), name="user-update-detail"),
     url(r'^search/',
         views.SearchView.as_view(), name="search"),
-    url(r'^home/',
+    url(r'^$',
         views.HomeView.as_view(), name="home"),
     url(r'^brands/',
         views.BrandsAutocompleteView.as_view(), name="brands-search"),
