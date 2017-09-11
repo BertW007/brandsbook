@@ -33,7 +33,7 @@ def create_detail(sender, instance, created, **kwargs):
         Detail.objects.create(person=instance, company_name='company_name', post_code='00-000',
                               city='city', street='street', nr='nr', phone='phone', nip='nip')
 
-###
+
 class UserLoginView(FormView):
     form_class = UserLoginForm
     template_name = 'users/user_login.html'
