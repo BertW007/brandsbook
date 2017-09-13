@@ -21,7 +21,7 @@ def signup(request):
 
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('http://127.0.0.1:8000/home/')
+            return redirect('http://127.0.0.1:8000/')
     else:
         form = UserCreationForm()
     return render(request, 'users/user.html', {'form': form})
@@ -44,13 +44,13 @@ class UserLoginView(FormView):
 
     def form_valid(self, form):
         login(self.request, form.user)
-        return redirect(self.request.GET.get('next', '/home'))
+        return redirect(self.request.GET.get('next', '/'))
 
 
 class UserLogoutView(View):
     def get(self, request):
         logout(request)
-        return redirect('/home')
+        return redirect('/')
 
 
 class UserShowAllView(ListView):
