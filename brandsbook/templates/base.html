@@ -38,7 +38,7 @@
                                         <a class="dropdown-item" href="{% url 'user-update-detail' pk=user.id %}">Edytuj</a>
                                         <a class="dropdown-item" href="">Ulubione</a>
                                         <a class="dropdown-item" href="{% url 'cooperation' pk=user.id %}">Propozycje firm</a>
-                                        <a class="dropdown-item" href="">Wiadomości</a>
+                                        <a class="dropdown-item" href="{% url 'create-msgs' pk=user.id %}">Wiadomości</a>
                                         <a class="dropdown-item" href="">____________</a>
                                         <a class="dropdown-item" href="{% url 'user-logout' %}">Wyloguj się</a>
                                     </div>

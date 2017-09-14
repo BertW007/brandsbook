@@ -6,9 +6,9 @@ from django.views import View
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.views.generic import FormView, ListView
-from .models import Detail, Brands, InterestingBrands
+from .models import Detail, Brands, InterestingBrands, Msgs
 from .forms import UserLoginForm, SearchForm, SearchBrandsForm, AddBrandsForm, \
-                   UserCreateDetailForm, BrandsCooperationForm
+                   UserCreateDetailForm, BrandsCooperationForm, MsgsCreateForm
 
 
 def signup(request):
@@ -91,7 +91,7 @@ class UserUpdateDetailView(FormView):
             detal.nr = form.cleaned_data['nr']
             detal.phone = form.cleaned_data['phone']
             detal.save(update_fields=['company_name', 'post_code', 'city', 'street', 'nr', 'phone', 'nip'])
-            return redirect('http://127.0.0.1:8000/home/')
+            return redirect('http://127.0.0.1:8000/')
 
         else:
             return render(request, self.template_name, {
@@ -149,7 +149,7 @@ class BrandsAddView(FormView):
             d = Detail.objects.get(id=pk)
             b.company.add(d)
 
-            return redirect('http://127.0.0.1:8000/home/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             return render(request, self.template_name, {
                 'form': form,
@@ -165,7 +165,7 @@ class InterestingBrandsAddView(BrandsAddView):
             d = Detail.objects.get(id=pk)
             b.company.add(d)
 
-            return redirect('http://127.0.0.1:8000/home/')
+            return redirect('http://127.0.0.1:8000/')
         else:
             return render(request, self.template_name, {
                 'form': form,
@@ -207,5 +207,34 @@ class BrandsCooperationView(View):
     def get(self, request, pk):
         form = BrandsCooperationForm(pk=pk)
         return render(request, 'users/cooperation.html', {
+            "form": form,
+        })
+
+
+class MsgsCreateView(View):
+    model = Msgs
+
+    def post(self, request, pk):
+        form = MsgsCreateForm(data=request.POST)
+        if form.is_valid():
+            receiver_name = request.POST.get("company")
+            content = form.cleaned_data['content']
+            if receiver_name:
+                receiver = Detail.objects.get(company_name=receiver_name)
+                receiver_id = receiver.id
+                msg = Msgs.objects.create(sender=User.objects.get(id=pk),
+                                          receiver=User.objects.get(id=receiver_id),
+                                          content=content
+                                          )
+                return render(request, 'users/create_msg.html', {
+                    "form": form,
+                })
+            return render(request, 'users/create_msg.html', {
+                "form": form,
+            })
+
+    def get(self, request, pk):
+        form = MsgsCreateForm()
+        return render(request, 'users/create_msg.html', {
             "form": form,
         })

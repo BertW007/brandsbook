@@ -44,4 +44,7 @@ urlpatterns = [
         views.InterestingBrandsAddView.as_view(), name="interesting-brands-add"),
     url(r'^cooperation/(?P<pk>(\d)+)/$',
         views.BrandsCooperationView.as_view(), name="cooperation"),
+    url(r'^message_create/(?P<pk>(\d)+)/$',
+        views.MsgsCreateView.as_view(), name="create-msgs"),
 ]
+

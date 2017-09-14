@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="POST">{% csrf_token %}
+        <label for="company_name">Odbiorca </label>
+        <input id="company_name" name="company" required>
+        {{ form }}
+        <input type="submit" value="Wyślij" />
+    </form>
+{% endblock %}

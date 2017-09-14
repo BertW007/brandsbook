@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django_extensions import validators
-from .models import Detail, Brands, InterestingBrands
+from .models import Detail, Brands, InterestingBrands, Msgs
 from . import validators
 
 
@@ -64,3 +64,9 @@ class BrandsCooperationForm(forms.Form):
         super(BrandsCooperationForm, self).__init__(*args, **kwargs)
         if pk:
             self.fields['brands'].queryset = InterestingBrands.objects.filter(company=Detail.objects.filter(id=pk))
+
+
+class MsgsCreateForm(forms.ModelForm):
+    class Meta:
+        model = Msgs
+        fields = ['content']

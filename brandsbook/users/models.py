@@ -30,6 +30,7 @@ class InterestingBrands(models.Model):
 
 
 class Msgs(models.Model):
-    sender = models.ForeignKey(User, related_name="sender")
-    receiver = models.ForeignKey(User, related_name="receiver")
+    sender = models.ForeignKey(User, null=True, related_name="sender")
+    receiver = models.ForeignKey(User, null=True, related_name="receiver")
     content = models.TextField()
+
