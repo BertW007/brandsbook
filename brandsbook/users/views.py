@@ -122,11 +122,14 @@ class HomeView(View):
     model = Detail
 
     def get(self, request):
-        user = Detail.objects.latest("id")
+        if (Detail.objects.filter(id=1).exists()):
+            user = Detail.objects.latest("id")
 
-        return render(request, 'users/home.html', {
-            "us": user,
-        })
+            return render(request, 'users/home.html', {
+                "us": user,
+            })
+        else:
+            return redirect('http://127.0.0.1:8000/signup')
 
 
 class BrandsAutocompleteView(FormView):
