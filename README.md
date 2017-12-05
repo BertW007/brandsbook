@@ -13,3 +13,5 @@
 3. dodawanie do ulubionych
 4. wyszukiwanie firm po marce
 5. poprawa templatek
+
+test
