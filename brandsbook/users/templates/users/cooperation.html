@@ -3,7 +3,7 @@
 
     <form action="" method="POST">{% csrf_token %}
         {{ form }}
-        <input type="submit" value="Pokaż" />
+        <input type="submit" value="Pokaż">
     </form>
     <table class="table">
         <thead class="thead-inverse">
@@ -18,7 +18,6 @@
                 <th>Telefon</th>
             </tr>
         </thead>
-        <>
         {% for us in brands %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
