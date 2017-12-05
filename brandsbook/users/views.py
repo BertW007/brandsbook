@@ -9,6 +9,7 @@ from django.views.generic import FormView, ListView
 from .models import Detail, Brands, InterestingBrands, Msgs
 from .forms import UserLoginForm, SearchForm, SearchBrandsForm, AddBrandsForm, \
                    UserCreateDetailForm, BrandsCooperationForm, MsgsCreateForm
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def signup(request):
@@ -122,13 +123,14 @@ class HomeView(View):
     model = Detail
 
     def get(self, request):
-        if (Detail.objects.filter(id=1).exists()):
+
+        try:
             user = Detail.objects.latest("id")
 
             return render(request, 'users/home.html', {
                 "us": user,
             })
-        else:
+        except ObjectDoesNotExist:
             return redirect('http://127.0.0.1:8000/signup')
 
 
