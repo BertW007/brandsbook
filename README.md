@@ -1,17 +1,13 @@
 # brandsbook
 
 1. Zarejestruj się
+<img src="https://zapodaj.net//images/c47bbc21b3c1e.png" width="400">
 2. Edytuj informację o swojej firmie
-3. Określ obrzar swojej działalności
+<img src="https://zapodaj.net/images/f434bfae52a4e.png" width="400">
+3. Określ obszar swojej działalności
+<img src="https://zapodaj.net/images/1f19b055fb071.png" width="400">
 4. Określ obszar działalności, który Cię interesuje
+<img src="https://zapodaj.net/images/f7010398eef17.png" width="400">
 5. Nawiąż kontakt
+<img src="https://zapodaj.net/images/1d3bcf568a30c.png" width="400">
 
-
-#TODO
-1. kontakt
-2. wysyłanie wiadomości
-3. dodawanie do ulubionych
-4. wyszukiwanie firm po marce
-5. poprawa templatek
-
-test
